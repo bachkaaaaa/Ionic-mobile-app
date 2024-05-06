@@ -1,0 +1,13 @@
+ion-button{
+  --background: #F4B324;
+  margin-right: auto; // Push the title to the right
+
+}
+// YourComponent.scss
+
+ion-header {
+  display: flex;
+  flex-direction: row;
+justify-content:space-between;
+}
+

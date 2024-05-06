@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ionic-mobile-app-3e1c2": {
+      "hosting": {
+        "app": [
+          "ionic-mobile-app-3e1c2"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ionic-mobile-app-3e1c2"
+  }
+}

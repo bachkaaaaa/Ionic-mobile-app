@@ -1,0 +1,17 @@
+ion-button{
+  --background: #F4B324;
+  margin-right: auto; // Push the title to the right
+
+
+}
+// YourComponent.scss
+
+ion-header {
+  display: flex;
+  align-items: center; // Align items vertically centered
+  flex-direction: row;
+}
+ion-title{
+  align-self: center;
+}
+

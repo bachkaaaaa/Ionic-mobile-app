@@ -19,15 +19,16 @@
     "target": "es2022",
     "module": "es2020",
     "lib": [
-      "es2018", 
+      "es2018",
       "dom"
     ],
     "useDefineForClassFields": false
-  },
+  },"include": [    "src/**/*.ts" // Make sure the path pattern includes the directory where forgot-password.module.ts resides
+],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": false
   }
 }

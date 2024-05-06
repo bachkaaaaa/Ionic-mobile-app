@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+
+    <ion-button>
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+
+    <ion-title >create Article</ion-title>
+
+</ion-header>
+<ion-content [fullscreen]="true" style="height:1000px">
+<form [formGroup]="articleForm" (ngSubmit)="send()">
+
+  <ion-label>Name</ion-label>
+  <ion-input label=""labelPlacement="stacked" formControlName="name"  placeholder="Enter product name"></ion-input>
+  <br>
+  <ion-label>Description</ion-label>
+  <ion-input label=""labelPlacement="stacked" formControlName="description" placeholder="Enter Product Description"></ion-input>
+  <br>
+  <ion-label>Price</ion-label>
+  <ion-input label=""labelPlacement="stacked" formControlName="price" placeholder="5000$"></ion-input>
+  <br>
+  <ion-label>Add Picture</ion-label>
+
+
+  <input type="file"  accept="image/*">
+</form>
+
+
+</ion-content >
+<ion-footer>  <ion-button type="submit" expand="full" (click)="send()">Add Your Art</ion-button>
+</ion-footer>

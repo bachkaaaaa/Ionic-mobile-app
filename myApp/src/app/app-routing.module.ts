@@ -2,13 +2,10 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
-  },
+
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'first-page',
     pathMatch: 'full'
   },
   {
@@ -16,9 +13,23 @@ const routes: Routes = [
     loadChildren: () => import('./pages/welcome-page/welcome-page.module').then(m => m.WelcomePagePageModule)
   },
   {
-    path: 'noligin',
-    loadChildren: () => import('./pages/noligin/noligin.module').then( m => m.NoliginPageModule)
+    path: 'create-article',
+    loadChildren: () => import('./pages/create-article/create-article.module').then( m => m.CreateArticlePageModule)
   },
+  {
+    path: 'delete-update-article',
+    loadChildren: () => import('./pages/delete-update-article/delete-update-article.module').then( m => m.DeleteUpdateArticlePageModule)
+  },
+  {
+    path: 'first-page',
+    loadChildren: () => import('./pages/first-page/first-page.module').then(m => m.FirstPagePageModule)
+  },
+  {
+    path: 'article-list',
+    loadChildren: () => import('./pages/article-list/article-list.module').then( m => m.ArticleListPageModule)
+  },
+
+
 ];
 
 @NgModule({
