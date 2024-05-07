@@ -53,10 +53,13 @@ export class DataService {
       const products = collectionData(q) as unknown as Observable<Product>;
       return products;}
 
-      addProduct(product: Product) {
-
+      addProduct(product: Product, userID: string) {
+        // Set the userID field of the product
+        product.userId = userID;
+      
         const productsRef = collection(this.firestore, 'products');
-        return addDoc(productsRef, product);}
+        return addDoc(productsRef, product);
+      }
 
         deleteProduct(product: Product)
       {

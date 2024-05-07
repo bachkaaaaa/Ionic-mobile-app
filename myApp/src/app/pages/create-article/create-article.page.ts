@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {DataService, Product} from "../../services/data.service";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthServiceService } from 'src/app/auth-service.service';
 
 @Component({
   selector: 'app-create-article',
@@ -17,7 +18,7 @@ export class CreateArticlePage  {
   // @ts-ignore
   articleForm: FormGroup ;
   selectedCategory: any;
-  constructor( private formBuilder:FormBuilder,private dataService:DataService) { }
+  constructor( private formBuilder:FormBuilder,private dataService:DataService,private authService: AuthServiceService) { }
   ngOnInit() {
     this.articleForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -39,12 +40,19 @@ export class CreateArticlePage  {
     this.selectedFile = event.target.files[0];
     console.log(this.selectedFile); // You can check the file properties
   }
-  send(){
-    // @ts-ignore
-    this.product=this.articleForm.value;
-    return console.log( this.product),
-    // @ts-ignore
-    this.dataService.addProduct(this.product);
+  send() {
+    // Get the current user ID
+    this.authService.getCurrentUser().subscribe(user => {
+      if (user) {
+        const userID = user.uid;
+  
+        // Assign userID to the product before adding it
+        this.product = this.articleForm.value;
+        this.dataService.addProduct(this.product, userID);
+  
+        console.log(this.product);
+      }
+    });
   }
 
 

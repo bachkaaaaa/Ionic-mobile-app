@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth, } from '@angular/fire/compat/auth';
-import { GoogleAuthProvider, getAuth, getRedirectResult, signInWithPopup, } from "firebase/auth";
+import { GoogleAuthProvider, getAuth, getRedirectResult, signInWithPopup,onAuthStateChanged } from "firebase/auth";
 import { User } from 'firebase/auth';
 
 import { Observable, async } from 'rxjs';
@@ -59,7 +59,19 @@ export class AuthServiceService {
             }, reject);
         })
     }
-
+    getCurrentUser(): Observable<User | null> {
+        const auth = getAuth(); // Get the Firebase Auth instance
+        return new Observable<User | null>(subscriber => {
+          const unsubscribe = onAuthStateChanged(auth, (user) => {
+            subscriber.next(user);
+          }, (error) => {
+            subscriber.error(error);
+          });
+    
+          // Ensure proper cleanup when the component unsubscribes
+          return () => unsubscribe();
+        });
+      }
     async signOut() {
         return await this.ngFireAuth.signOut();
     }
