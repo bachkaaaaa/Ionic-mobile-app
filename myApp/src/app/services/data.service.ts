@@ -47,12 +47,18 @@ export class DataService {
   //   const  refq =  query(jouralRef,where('userId','==',userId))
   //   return collectionData(refq,{ idField: 'id'}) as Observable<Product[]>
   // }
-    getProductById(id:string): Observable<Product> {
-      const q: Query = query(collection(this.firestore, 'products'), where('id', '==', id));
+      getProductById(id:string): Observable<Product> {
+        const q: Query = query(collection(this.firestore, 'products'), where('id', '==', id));
 
-      const products = collectionData(q) as unknown as Observable<Product>;
-      return products;}
-
+        const products = collectionData(q) as unknown as Observable<Product>;
+        return products;
+      
+      }
+      
+      getProductsByUserID(userID: string): Observable<Product[]> {
+        const q = query(collection(this.firestore, 'products'), where('userId', '==', userID));
+        return collectionData(q) as Observable<Product[]>;
+      }
       addProduct(product: Product, userID: string) {
         // Set the userID field of the product
         product.userId = userID;
