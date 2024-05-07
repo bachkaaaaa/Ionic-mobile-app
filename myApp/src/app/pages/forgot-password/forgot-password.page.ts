@@ -30,7 +30,7 @@ email:any
   
     toast.present();
     toast.onDidDismiss().then(()=>{
-      this.router.navigate(['/login']);
+      this.router.navigate(['/logging-in']);
     })
   }
 }
