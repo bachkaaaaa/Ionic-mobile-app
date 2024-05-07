@@ -13,7 +13,7 @@ export class WelcomePagePage implements OnInit {
   ngOnInit() {
   }
   nextPage() {
-    this.navCtrl.navigateForward('/noligin');
+    this.navCtrl.navigateForward('/article-list' );
   }
 
 }

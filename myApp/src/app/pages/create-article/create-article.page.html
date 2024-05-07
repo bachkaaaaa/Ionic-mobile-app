@@ -8,10 +8,10 @@
 
 </ion-header>
 <ion-content [fullscreen]="true" style="height:1000px">
-<form [formGroup]="articleForm" (ngSubmit)="send()">
+<form [formGroup]="articleForm"   >
 
   <ion-label>Name</ion-label>
-  <ion-input label=""labelPlacement="stacked" formControlName="name"  placeholder="Enter product name"></ion-input>
+  <ion-input label=""labelPlacement="stacked" formControlName="title"  placeholder="Enter product name"></ion-input>
   <br>
   <ion-label>Description</ion-label>
   <ion-input label=""labelPlacement="stacked" formControlName="description" placeholder="Enter Product Description"></ion-input>
@@ -19,13 +19,24 @@
   <ion-label>Price</ion-label>
   <ion-input label=""labelPlacement="stacked" formControlName="price" placeholder="5000$"></ion-input>
   <br>
-  <ion-label>Add Picture</ion-label>
 
+  <ion-label>Select Category</ion-label>
+  <ion-select formControlName="selectedCategory">
+    <ion-select-option value="painting">Painting</ion-select-option>
+    <ion-select-option value="sculpture">Sculpture</ion-select-option>
+    <ion-select-option value="drawing">Drawing</ion-select-option>
+    <ion-select-option value="photography">Photography</ion-select-option>
+    <ion-select-option value="printmaking">Printmaking</ion-select-option>
+    <!-- Add more categories here -->
+  </ion-select>
+    <br>
+  <ion-label>Add Picture</ion-label>
 
   <input type="file"  accept="image/*">
 </form>
 
 
 </ion-content >
-<ion-footer>  <ion-button type="submit" expand="full" (click)="send()">Add Your Art</ion-button>
+<ion-footer>  <ion-button type="submit" (click)="send()" expand="full" [disabled]="!articleForm.valid">Add Your Art</ion-button>
+
 </ion-footer>

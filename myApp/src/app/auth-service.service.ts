@@ -28,9 +28,6 @@ export interface Users{
     providedIn: 'root'
 })
 export class AuthServiceService {
-    GoogleAuth() {
-        throw new Error('Method not implemented.');
-    }
 
 
     constructor(public ngFireAuth: AngularFireAuth) {

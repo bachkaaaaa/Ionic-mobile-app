@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { InfiniteScrollCustomEvent } from '@ionic/angular';
 import {DataService, Product} from "../../services/data.service";
-import {DocumentData} from "@angular/fire/compat/firestore";
 
 @Component({
   selector: 'app-article-list',
@@ -10,12 +9,28 @@ import {DocumentData} from "@angular/fire/compat/firestore";
   styleUrls: ['./article-list.page.scss'],
 })
 export class ArticleListPage  {
+   // @ts-ignore
+  selectedCategory :string="All";
+
   items:Product[] = [];
-  constructor(private dataService:DataService) {
+  constructor(private dataService:DataService,private router: Router) {
     this.dataService.getAllProduct().subscribe((response)=>this.items=response)
+    console.log(this.items);
+
+  }
+
+  getSelectedCategoryValue() {}
+
+  onSelectionChange() {
+    if(this.selectedCategory=="All")
+      this.dataService.getAllProduct().subscribe((response)=>this.items=response)
+  else
+    this.dataService.getAllProductByCategory(this.selectedCategory).subscribe((response)=>this.items=response)
   }
 
 
-
-
+  navigateToDetails(itemId: string|undefined) {
+    // Navigate to another page with card details
+    this.router.navigate(['/detail', itemId]);
+  }
 }

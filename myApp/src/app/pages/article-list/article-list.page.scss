@@ -6,4 +6,68 @@ div{
 
 
 }
+.col-md-3 {
+  /* Define styles for medium-sized screens */
+  /* Example styles */
+  width: 40%; /* One-fourth of the available width */
+  float: left; /* Ensures elements float next to each other */
+height: 300px;
+}
+ion-button{
+  --background: #F4B324;
+  margin-right: auto; // Push the title to the right
+
+
+}
+
+// YourComponent.scss
+
+ion-header {
+  display: flex;
+  align-items: center; // Align items vertically centered
+  justify-content: space-between; // Space evenly along the main axis
+
+}
+.select-container {
+  margin-left: auto; // Push the select container to the right
+}
+ion-title{
+  align-self: center;
+}
+.custom-select {
+  --border-radius: 20px; /* Adjust border radius as needed */
+  --border-color: #ccc; /* Adjust border color as needed */
+  --border-width: 1px; /* Adjust border width as needed */
+  --placeholder-color: #999; /* Adjust placeholder color as needed */
+}
+
+.custom-select .select-text {
+  font-size: 16px; /* Adjust font size as needed */
+  color: #333; /* Adjust text color as needed */
+  font-weight: bold; /* Adjust font weight as needed */
+}
+
+.custom-select .select-placeholder {
+  color: var(--placeholder-color);
+}
+
+.custom-select .select-icon {
+  display: none; /* Hide the select icon */
+}
+
+.custom-select .select-text {
+  padding: 10px 15px; /* Adjust padding as needed */
+}
+
+.custom-select .select-text:after {
+  content: none; /* Hide the dropdown arrow */
+}
+
+.custom-select .select-overlay {
+  background-color: rgba(255, 255, 255, 0.8); /* Adjust overlay background color as needed */
+}
+
+
+
+
 

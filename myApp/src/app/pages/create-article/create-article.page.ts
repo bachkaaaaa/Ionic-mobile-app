@@ -16,12 +16,17 @@ export class CreateArticlePage  {
   product: Product ;
   // @ts-ignore
   articleForm: FormGroup ;
+  selectedCategory: any;
   constructor( private formBuilder:FormBuilder,private dataService:DataService) { }
   ngOnInit() {
     this.articleForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      description: ['', [Validators.required]]
-,      price: ['', [Validators.required]]
+      title: ['', Validators.required],
+      description: ['', Validators.required],
+
+      price: ['', [Validators.required]]
+      ,
+
+      selectedCategory: ['', [Validators.required]]
 
     });
   }

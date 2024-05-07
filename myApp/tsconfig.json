@@ -23,12 +23,11 @@
       "dom"
     ],
     "useDefineForClassFields": false
-  },"include": [    "src/**/*.ts" // Make sure the path pattern includes the directory where forgot-password.module.ts resides
-],
+  },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": false
+    "strictTemplates": true
   }
 }

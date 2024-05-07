@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {addDoc, collection, collectionData, doc, docData,deleteDoc, Firestore,query,where} from "@angular/fire/firestore";
+import {addDoc, collection, collectionData, doc, docData,deleteDoc, Firestore,query,where, Query } from "@angular/fire/firestore";
 import {Observable} from "rxjs";
 import {AuthServiceService} from "../auth-service.service";
 
@@ -7,14 +7,19 @@ export class Product{
   id? : string;
   userId:string;
   title: string;
-  content:string;
-  createdAt:any
+  description: string;
+  selectedCategory:string;
 
-  constructor(userId: string, title: string, content: string, createdAt: any) {
+  price:string;
+
+  constructor(id:string,userId: string, title: string,description:string, price: string,selectedCategory:string) {
     this.userId = userId;
+    this.id = id;
+
     this.title = title;
-    this.content = content;
-    this.createdAt = createdAt;
+    this.price = price;
+    this.selectedCategory=selectedCategory;
+    this.description=description;
   }
 
 }
@@ -22,36 +27,34 @@ export class Product{
   providedIn: 'root'
 })
 export class DataService {
-  private userId:any
 
-  constructor(private firestore:Firestore,private authService:AuthServiceService) {
+  constructor(private firestore:Firestore) {
 
-    this.authService.getProfile().then(user => {
-
-      this.userId = user?.uid;
-      console.log(user?.uid);
-      // this.journalCollection = co;;
-
-    }).catch(error => {
-      console.error('Error getting user profile:', error);
-    });
   }
   getAllProduct():Observable<Product[]>{
     const products=collection(this.firestore,"products");
     return collectionData(products) as unknown as Observable<Product[]>;}
-  getProductByUserId(userId:any): Observable<Product[]> {
+  getAllProductByCategory(category: string): Observable<Product[]> {
+    const q: Query = query(collection(this.firestore, 'products'), where('selectedCategory', '==', category));
 
-    const jouralRef = collection(this.firestore, 'notes')
-
-    const  refq =  query(jouralRef,where('userId','==',userId))
-    return collectionData(refq,{ idField: 'id'}) as Observable<Product[]>
+    const products = collectionData(q) as unknown as Observable<Product[]>;
+    return products;
   }
+  // getProductByUserId(userId:any): Observable<Product[]> {
+  //
+  //   const jouralRef = collection(this.firestore, 'notes')
+  //
+  //   const  refq =  query(jouralRef,where('userId','==',userId))
+  //   return collectionData(refq,{ idField: 'id'}) as Observable<Product[]>
+  // }
     getProductById(id:string): Observable<Product> {
-      const ProductDocRef = doc(this.firestore, 'products/${id} ');
-      return docData(ProductDocRef, { idField: 'id' }) as Observable<Product>;}
+      const q: Query = query(collection(this.firestore, 'products'), where('id', '==', id));
+
+      const products = collectionData(q) as unknown as Observable<Product>;
+      return products;}
 
       addProduct(product: Product) {
-        product.userId = this.userId;
+
         const productsRef = collection(this.firestore, 'products');
         return addDoc(productsRef, product);}
 

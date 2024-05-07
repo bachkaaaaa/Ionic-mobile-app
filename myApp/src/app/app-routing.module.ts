@@ -28,6 +28,19 @@ const routes: Routes = [
     path: 'article-list',
     loadChildren: () => import('./pages/article-list/article-list.module').then( m => m.ArticleListPageModule)
   },
+  {
+    path: 'detail/:id',
+    loadChildren: () => import('./pages/detail/detail.module').then(m => m.DetailPageModule)
+  },
+
+  {
+    path: 'logging-in',
+    loadChildren: () => import('./pages/logging-in/logging-in.module').then( m => m.LoggingInPageModule)
+  },
+  {
+    path: 'sign-up',
+    loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule)
+  },
 
 
 ];

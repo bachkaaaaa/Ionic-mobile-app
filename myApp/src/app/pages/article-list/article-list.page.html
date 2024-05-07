@@ -1,28 +1,45 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>articleList</ion-title>
-  </ion-toolbar>
-</ion-header>
 
+    <ion-button>
+        <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+
+    <ion-title >Art</ion-title>
+    <div class="select-container">
+    <ion-select  [(ngModel)]="selectedCategory" interface="action-sheet" class="custom-select" (ionChange)="onSelectionChange()">
+        <ion-select-option value="All">All</ion-select-option>
+        <ion-select-option value="painting">Painting</ion-select-option>
+        <ion-select-option value="sculpture">Sculpture</ion-select-option>
+        <ion-select-option value="drawing">Drawing</ion-select-option>
+        <ion-select-option value="photography">Photography</ion-select-option>
+        <ion-select-option value="printmaking">Printmaking</ion-select-option>
+        <!-- Add more categories here -->
+    </ion-select></div>
+</ion-header>
 <ion-content>
 
 
      <div >
-         <ion-card *ngFor="let item of items; let index">
-<!--        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />-->
-<!--        <ion-card-header >-->
-<!--          <ion-card-title>{{ item['name'] }}</ion-card-title>-->
-<!--          <ion-card-subtitle>{{ item['description'] }}</ion-card-subtitle>-->
-<!--        </ion-card-header>-->
+         <ion-card *ngFor="let item of items; let index" class="col-md-3 " (click)="navigateToDetails(item.id)">
+        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+             <ion-card-header >
 
-<!--        <ion-card-content>-->
-<!--          {{ item['price'] }}        </ion-card-content>-->
+                 <ion-card-content><b>Price :{{ item["price"] }}</b></ion-card-content>
+                 <ion-card-subtitle>  Category :{{ item["selectedCategory"] }}  </ion-card-subtitle>
+
+                 <ion-card-subtitle>Description :{{ item["description"] }}</ion-card-subtitle>
+                 <br>
+
+                 <ion-card-title>{{ item["title"] }}</ion-card-title>
+
+             </ion-card-header>
+
+
+
       </ion-card>
       </div>
 
 
 
-  <ion-infinite-scroll>
-    <ion-infinite-scroll-content loadingText="Please wait..." loadingSpinner="bubbles"></ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+
 </ion-content>
