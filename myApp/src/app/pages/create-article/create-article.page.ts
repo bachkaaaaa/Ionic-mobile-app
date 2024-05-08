@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthServiceService } from 'src/app/auth-service.service';
 import { FirebaseStorage, getDownloadURL, getStorage, ref, uploadBytesResumable } from '@angular/fire/storage';
 import { firstValueFrom } from 'rxjs';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-create-article',
@@ -20,7 +21,7 @@ export class CreateArticlePage  {
   // @ts-ignore
   articleForm: FormGroup ;
   selectedCategory: any;
-  constructor( private formBuilder:FormBuilder,private dataService:DataService,private authService: AuthServiceService) { }
+  constructor( private formBuilder:FormBuilder,private toastController:ToastController,private dataService:DataService,private authService: AuthServiceService) { }
   ngOnInit() {
     this.articleForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -57,13 +58,28 @@ export class CreateArticlePage  {
         this.product = { ...this.articleForm.value, imageURL: downloadURL };
         await this.dataService.addProduct(this.product, userId);
         console.log('Product added successfully!');
+        this.presentToast("Product Added Successfully")
       } catch (error) {
         console.error('Error uploading image or adding product:', error);
+        
         // Handle errors appropriately, e.g., display error message to user
       }
     } else {
       console.error('No user signed in. Cannot add product.');
+      
     }
+  }
+  async presentToast(message: string) {
+    console.log(message);
+
+    const toast = await this.toastController.create({
+      message: "Product Added Successfully",
+      duration: 1500,
+      position: 'top',
+      color: 'success' // Set the color to 'success' for green
+    });
+
+    await toast.present();
   }
   
   

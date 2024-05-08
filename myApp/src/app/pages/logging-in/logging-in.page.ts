@@ -62,7 +62,7 @@ export class LoggingInPage implements OnInit {
     console.log(message);
 
     const toast = await this.toastController.create({
-      message: "elhedi weld jalila",
+      message: "User Not Found",
       duration: 1500,
       position: 'top',
     });

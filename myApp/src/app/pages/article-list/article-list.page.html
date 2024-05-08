@@ -18,12 +18,11 @@
 <ion-content>
 
 
-    <div *ngIf="items?.length > 0">
+  
       <div class="col-md-3" *ngFor="let item of items; let index" (click)="navigateToDetails(item.id)">
         <ion-card>
-          <ion-img *ngIf="item.imageURL" [src]="item.imageURL" alt="Product Image"></ion-img>
-          <ion-img *ngIf="!item.imageURL" src="ahttps://ionicframework.com/docs/img/demos/card-media.png" alt="No Image Available"></ion-img>  <ion-card-header>
-  
+          <img alt="Silhouette of mountains" src="https://firebasestorage.googleapis.com/v0/b/artventure-69.appspot.com/o/Products%2F1715128877853_ce9.jpg?alt=media&token=dc0378b3-8b33-4666-ac40-fd3bb737c8db" />
+          <ion-card-header>
             <ion-card-content><b>Price : {{ item["price"] }}</b></ion-card-content>
             <ion-card-subtitle> Category : {{ item["selectedCategory"] }} </ion-card-subtitle>
   
@@ -31,14 +30,14 @@
             <br>
   
             <ion-card-title>{{ item["title"] }}</ion-card-title>
-  
           </ion-card-header>
+
   
   
   
         </ion-card>
       </div>
-    </div>
+
   
     <div *ngIf="items?.length === 0">
       No products found!
