@@ -1,0 +1,36 @@
+<ion-content [fullscreen]="true" class="background-color">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">client</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div class="container">
+    <div class="icon-container">
+      <input type="file" accept="image/*"  style="display: none;" id="imageInput">
+      <label for="imageInput">
+        <ion-icon *ngIf="!imageUrl" name="person" class="contact-icon" style="cursor: pointer;"></ion-icon>
+      </label>
+      <img *ngIf="imageUrl" [src]="" class="profile-image">
+    </div>
+    <ion-button class="custom-button">Edit profile</ion-button>
+  </div>
+  <div >
+    <ion-card *ngFor="let item of items; let index" class="col-md-3 " (click)="navigateToDetails(item.id)">
+      <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+      <ion-card-header >
+
+        <ion-card-content><b>Price :{{ item["price"] }}</b></ion-card-content>
+        <ion-card-subtitle>  Category :{{ item["selectedCategory"] }}  </ion-card-subtitle>
+
+        <ion-card-subtitle>Description :{{ item["description"] }}</ion-card-subtitle>
+        <br>
+
+        <ion-card-title>{{ item["title"] }}</ion-card-title>
+
+      </ion-card-header>
+
+
+
+    </ion-card>
+  </div>
+</ion-content>

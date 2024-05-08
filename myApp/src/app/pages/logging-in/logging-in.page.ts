@@ -51,7 +51,7 @@ export class LoggingInPage implements OnInit {
       if (user) {
         loading.dismiss();
         this.router.navigate(
-            ['/article-list'])
+            ['/tab/tab1'])
       }
     } else {
       return console.log('Please provide all the required values!');
