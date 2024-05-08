@@ -1,0 +1,47 @@
+.background-color {
+  --ion-background-color: #D9D9D9; /* Set the background color for the entire page */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Set the height of the container to full viewport height */
+  position: relative; /* Position the container relative for absolute positioning */
+}
+
+.contact-icon {
+  font-size: 8rem; /* Adjust the size as needed */
+  color: white; /* Set the color to white */
+}
+
+.icon-container {
+  width: 200px; /* Adjust the size of the circle */
+  height: 200px; /* Adjust the size of the circle */
+  border-radius: 50%; /* Make it circular */
+  background-color: black; /* Set the background color to black */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px; /* Adjust the space between the icon and buttons */
+  position: relative; /* Position the container relative for absolute positioning */
+}
+
+.profile-image {
+  max-width: 100%; /* Ensure the image doesn't exceed the container */
+  max-height: 100%; /* Ensure the image doesn't exceed the container */
+  border-radius: 50%; /* Make it circular */
+  position: absolute; /* Position the image absolutely */
+  top: 0; /* Position at the top */
+  left: 0; /* Position at the left */
+  width: 100%; /* Ensure the image fills the container */
+  height: 100%; /* Ensure the image fills the container */
+}
+
+.custom-button {
+  --background: #7B6CDB;
+  color: white; /* Text color */
+  width: 200px; /* Set the width of the buttons */
+  margin-bottom: 10px; /* Adjust the space between the buttons */
+}

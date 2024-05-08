@@ -45,6 +45,27 @@ const routes: Routes = [
     path: 'forgot-password',
     loadChildren: () => import('./pages/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   },
+  {
+    path: 'tab',
+    loadChildren: () => import('./pages/tab/tab.module').then( m => m.TabPageModule)
+  },
+  {
+    path: 'tabs/tab1',
+    loadChildren: () => import('./pages/article-list/article-list.module').then( m => m.ArticleListPageModule)
+  }, {
+    path: 'tabs/tab2',
+    loadChildren: () => import('./pages/client/client.module').then( m => m.ClientPageModule)
+  }, {
+    path: 'tabs/tab3',
+    loadChildren: () => import('./pages/create-article/create-article.module').then( m => m.CreateArticlePageModule)
+  },
+  {
+    path: 'client',
+    loadChildren: () => import('./pages/client/client.module').then( m => m.ClientPageModule)
+  }
+
+
+
 
 
 ];
