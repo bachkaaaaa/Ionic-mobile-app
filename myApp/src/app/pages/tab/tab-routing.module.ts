@@ -12,10 +12,10 @@ const routes: Routes = [
         path: 'tab1',
         loadChildren: () => import('../article-list/article-list.module').then( m => m.ArticleListPageModule)
       },{
-        path: 'tab2',
+        path: 'tab3',
         loadChildren: () => import('../client/client.module').then( m => m.ClientPageModule)
       },{
-        path: 'tab3',
+        path: 'tab2',
         loadChildren: () => import('../create-article/create-article.module').then( m => m.CreateArticlePageModule)
       },
 

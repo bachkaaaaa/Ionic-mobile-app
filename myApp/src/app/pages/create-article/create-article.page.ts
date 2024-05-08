@@ -5,6 +5,7 @@ import { AuthServiceService } from 'src/app/auth-service.service';
 import { FirebaseStorage, getDownloadURL, getStorage, ref, uploadBytesResumable } from '@angular/fire/storage';
 import { firstValueFrom } from 'rxjs';
 import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-article',
@@ -21,7 +22,7 @@ export class CreateArticlePage  {
   // @ts-ignore
   articleForm: FormGroup ;
   selectedCategory: any;
-  constructor( private formBuilder:FormBuilder,private toastController:ToastController,private dataService:DataService,private authService: AuthServiceService) { }
+  constructor( private formBuilder:FormBuilder,private toastController:ToastController,private dataService:DataService,private authService: AuthServiceService,private router:Router) { }
   ngOnInit() {
     this.articleForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -59,6 +60,8 @@ export class CreateArticlePage  {
         await this.dataService.addProduct(this.product, userId);
         console.log('Product added successfully!');
         this.presentToast("Product Added Successfully")
+        this.router.navigate(['/article-list']);
+
       } catch (error) {
         console.error('Error uploading image or adding product:', error);
         

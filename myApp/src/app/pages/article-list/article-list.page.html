@@ -19,9 +19,9 @@
 
 
   
-      <div class="col-md-3" *ngFor="let item of items; let index" (click)="navigateToDetails(item.id)">
+      <div class="col-md-3 divo" *ngFor="let item of items; let index" (click)="navigateToDetails()">
         <ion-card>
-          <img alt="Silhouette of mountains" src="https://firebasestorage.googleapis.com/v0/b/artventure-69.appspot.com/o/Products%2F1715128877853_ce9.jpg?alt=media&token=dc0378b3-8b33-4666-ac40-fd3bb737c8db" />
+          <img alt="Silhouette of mountains" src="https://firebasestorage.googleapis.com/v0/b/artventure-69.appspot.com/o/Products%2F190430171751-mona-lisa.jpg?alt=media&token=563196b9-d06c-448f-8f57-720cf207420e" />
           <ion-card-header>
             <ion-card-content><b>Price : {{ item["price"] }}</b></ion-card-content>
             <ion-card-subtitle> Category : {{ item["selectedCategory"] }} </ion-card-subtitle>
@@ -30,6 +30,7 @@
             <br>
   
             <ion-card-title>{{ item["title"] }}</ion-card-title>
+            <ion-button >Add to cart</ion-button>
           </ion-card-header>
 
   

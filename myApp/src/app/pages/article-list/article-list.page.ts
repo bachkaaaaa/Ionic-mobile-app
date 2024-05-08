@@ -53,11 +53,10 @@ export class ArticleListPage {
     this.loadData();
   }
 
-  navigateToDetails(itemId: string | undefined) {
-    console.log('Item ID:', itemId); 
-    if (itemId) {
-      // Navigate to another page with card details
-      this.router.navigate(['/detail', itemId]);
-    }
+  navigateToDetails() {
+    // console.log('Item ID:', itemId); 
+   
+      this.router.navigate(['/logging-in']);
+  
   }
 }
