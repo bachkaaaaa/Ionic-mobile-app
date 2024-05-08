@@ -54,6 +54,10 @@ export class ArticleListPage {
   }
 
   navigateToDetails(itemId: string | undefined) {
-    this.router.navigate(['/detail', itemId]);
+    console.log('Item ID:', itemId); 
+    if (itemId) {
+      // Navigate to another page with card details
+      this.router.navigate(['/detail', itemId]);
+    }
   }
 }

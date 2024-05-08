@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@capacitor/camera": "^6.0.0",
-    "@ionic-native/camera": "^5.36.0"
-  }
-}

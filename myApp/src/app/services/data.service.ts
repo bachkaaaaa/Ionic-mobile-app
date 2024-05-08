@@ -54,7 +54,7 @@ export class DataService {
         return products;
       
       }
-      
+
       getProductsByUserID(userID: string): Observable<Product[]> {
         const q = query(collection(this.firestore, 'products'), where('userId', '==', userID));
         return collectionData(q) as Observable<Product[]>;

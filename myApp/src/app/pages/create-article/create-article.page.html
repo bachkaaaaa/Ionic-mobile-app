@@ -32,7 +32,8 @@
     <br>
   <ion-label>Add Picture</ion-label>
 
-  <input type="file"  accept="image/*">
+  <input type="file" (change)="fileChanged($event)" accept="image/*">
+
 </form>
 
 
